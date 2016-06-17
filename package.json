@@ -1,0 +1,24 @@
+{
+  "name": "quotes",
+  "version": "1.0.0",
+  "description": "A catalog of interesting quotes",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "chosenbreed37",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.5.0",
+    "restler": "^3.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "grunt": "^1.0.1",
+    "grunt-cafe-mocha": "^0.1.13",
+    "grunt-standard": "^2.0.0",
+    "mocha": "^2.5.3"
+  }
+}
