@@ -57,10 +57,10 @@ var options = {
 
 switch (app.get('env')) {
   case 'development':
-    mongoose.connect('mongodb://172.17.0.3/quotes', options)
+    mongoose.connect('mongodb://db/quotes', options)
     break
   case 'production':
-    mongoose.connect('mongodb://172.17.0.3/quotes', options)
+    mongoose.connect('mongodb://db/quotes', options)
     break
   default:
     throw new Error('Unknown execution environment: ' + app.get('env'))
