@@ -1,5 +1,5 @@
 var assert = require('chai').assert
-var http = require('http')
+// var http = require('http')
 var rest = require('restler')
 
 suite('API tests', function () {
