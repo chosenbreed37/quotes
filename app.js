@@ -6,7 +6,7 @@ var app = express()
 
 app.use(bodyParser.json())
 
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 8080)
 
 app.get('/api/quotes', function (req, res) {
   Quote.find({}, function (err, quotes) {
@@ -66,6 +66,7 @@ switch (app.get('env')) {
     throw new Error('Unknown execution environment: ' + app.get('env'))
 }
 
+/*
 // initialise db
 Quote.find(function (err, quotes) {
   if (quotes.length) return
@@ -85,6 +86,7 @@ Quote.find(function (err, quotes) {
     author: 'Bertrand Russell'
   }).save()
 })
+*/
 
 app.listen(app.get('port'), function () {
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.')

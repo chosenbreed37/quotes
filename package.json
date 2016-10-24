@@ -1,9 +1,10 @@
 {
   "name": "quotes",
   "version": "1.0.0",
-  "description": "A catalog of interesting quotes",
+  "description": "A catalog o8f interesting quotes",
   "main": "app.js",
   "scripts": {
+    "start": "node ./app.js",
     "test": "mocha -u tdd"
   },
   "author": "chosenbreed37",
