@@ -8,19 +8,24 @@ app.use(bodyParser.json())
 
 app.set('port', process.env.PORT || 8080)
 
+function convert(quote) {
+  console.log(quote);
+  return {
+    text: quote.Text,
+    author: quote.Author,
+    source: quote.Source,
+    id: quote._id
+  };
+}
+
 app.get('/api/quotes', function (req, res) {
   Quote.find({}, function (err, quotes) {
     if (err) return res.status(500).send('Error occurred: database error.')
     res.json(quotes.map(function (quote) {
-      return {
-        text: quote.text,
-        id: quote._id,
-        author: quote.author,
-        source: quote.source
-      }
-    }))
-  })
-})
+        return convert(quote);
+    }));
+  });
+});
 
 app.post('/api/quote', function (req, res) {
   var quote = new Quote({
@@ -38,12 +43,7 @@ app.post('/api/quote', function (req, res) {
 app.get('/api/quote/:id', function (req, res) {
   Quote.findById(req.params.id, function (err, quote) {
     if (err) return res.status(500).send('Error occurred: database error.')
-    res.json({
-      text: quote.text,
-      author: quote.author,
-      source: quote.source,
-      id: quote._id
-    })
+    res.json(convert(quote));
   })
 })
 
@@ -57,7 +57,7 @@ var options = {
 
 switch (app.get('env')) {
   case 'development':
-    mongoose.connect('mongodb://db/quotes', options)
+    mongoose.connect('mongodb://localhost:27017/quotes', options)
     break
   case 'production':
     mongoose.connect('mongodb://db/quotes', options)
@@ -89,6 +89,7 @@ Quote.find(function (err, quotes) {
 */
 
 app.listen(app.get('port'), function () {
-  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.')
+  console.log('ENV: ', app.get('env'));
+  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 })
 
